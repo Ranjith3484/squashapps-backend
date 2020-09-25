@@ -23,13 +23,16 @@ router.post('/user/register/sending/code', (req, res) => {
       message: "Code Sended",
       email:user.email
     })
-    var transporter = nodemailer.createTransport({
-      service: 'gmail',
+     var transporter = nodemailer.createTransport({
+      host: 'smtp.gmail.com',
+      port: 465,
+      secure: true,
       auth: {
-        user: 'gururanjith425@gmail.com',
-        pass: 'ranjith@425'
+          type: 'OAuth2',
+          user: 'gururanjith425@gmail.com',
+          accessToken: "mytoken"
       }
-    });
+  });
 
     var mailOptions = {
       from: 'gururanjith425@gmail.com',
@@ -144,12 +147,15 @@ router.put("/resend/code", async (req, res) => {
       message: "Verification code sended"
     });
     var transporter = nodemailer.createTransport({
-      service: 'gmail',
+      host: 'smtp.gmail.com',
+      port: 465,
+      secure: true,
       auth: {
-        user: 'gururanjith425@gmail.com',
-        pass: 'ranjith@425'
+          type: 'OAuth2',
+          user: 'gururanjith425@gmail.com',
+          accessToken: "mytoken"
       }
-    });
+  });
 
     var mailOptions = {
       from: 'gururanjith425@gmail.com',
